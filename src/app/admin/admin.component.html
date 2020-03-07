@@ -30,12 +30,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let admin of admins">
-                        <td class="hidden">{{admin.id}}</td>
-                        <td>{{admin.name}}</td>
-                        <td>{{admin.email}}</td>
+                    <tr *ngFor="let user of users">
+                        <td class="hidden">{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
                         <td>
-                            <button class="btn btn-success" (click)="delete(admin)"> Delete</button>
+                            <button class="btn btn-success" (click)="delete(user)"> Delete</button>
                         </td>
                     </tr>
                 </tbody>

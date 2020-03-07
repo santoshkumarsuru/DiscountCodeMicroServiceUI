@@ -9,7 +9,7 @@ import { AdminService } from './admin.service';
 })
 export class AdminComponent implements OnInit {
 
-  admins: any;
+  users: any;
   offers: any;
   user: any = {
     name: '',
@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
     this.adminService.getAdmins()
     .subscribe((data) => {
       console.log(data);
-      this.admins = data;
+      this.users = data['recipients'];
     });
   }
 
@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
     this.adminService.getOffers()
     .subscribe((data) => {
       console.log(data);
-      this.offers = data;
+      this.offers = data['specialOffers'];
     });
   }
 
