@@ -33,4 +33,7 @@ export class AdminService {
     return this.http.post("http://localhost:8080/getAllDiscountCodesByEmail?email=" + emailId, {}); 
   }
 
+  redeemDiscountCode(disc: any): any {
+    return this.http.post("http://localhost:8080/redeemDiscountCode", disc); 
+  }
 }

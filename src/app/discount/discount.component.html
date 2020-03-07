@@ -1,0 +1,61 @@
+<div class="row" style="margin-right: 0;; margin: 20px;">
+    <div class="user-container col-md-12">
+        <h2 style="margin: auto">Discount Codes By Email</h2>
+        <table class="table table-striped  table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Email
+                        <input name="name" [(ngModel)]="emailForDisCode" class="form-control" type="text" required />
+                    </th>
+                    <th>
+                        <button (click)="getCodes()" class="btn btn-success" [disabled]="emailForDisCode == ''">Get</button>
+                    </th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="row" style="margin-right: 0; margin: 20px; border-bottom: 4px solid gainsboro;">
+    <div class="col-md-4" *ngFor="let offer of discountInfos">
+        <div class="offer-tile shadow">
+            <h5>Code: {{offer.discountCode}}</h5>
+            <h1>{{offer.specialOfferName}}</h1>
+            <button (click)="redeemDiscFromTile(offer)" class="btn btn-success">Redeem</button>            
+        </div>
+    </div>
+    <div class="error-msg" *ngIf="discountInfos == null ">*There are no Discounts*</div>
+    <div *ngIf="redeemResp != null">
+        <span class="error-msg" *ngIf="redeemResp['status'] == 'ERROR'">{{redeemResp['errorMessage']}}</span>
+        <span class="info-msg" *ngIf="redeemResp['status'] == 'SUCCESS'">Successfully Redeemed</span>
+    </div>
+</div>
+
+<div class="row" style="margin-right: 0; margin: 20px; border-bottom: 4px solid gainsboro;">
+    <div class="user-container col-md-12">
+        <h2 style="margin: auto">Redeem Discount code</h2>
+        <table class="table table-striped  table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Email
+                        <input name="email" [(ngModel)]="dicount.email" class="form-control" type="text" required />
+                    </th>
+                    <th>
+                        Discount Code
+                        <input name="discountCode" [(ngModel)]="dicount.discountCode" class="form-control" type="text" required />
+                    </th>
+                    <th>
+                        <button (click)="redeemDisc()" class="btn btn-success" [disabled]="dicount.email == '' || dicount.discountCode == ''">Redeem</button>
+                    </th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+        </table>
+        <div *ngIf="redeemResp != null">
+            <span class="error-msg" *ngIf="redeemResp['status'] == 'ERROR'">{{redeemResp['errorMessage']}}</span>
+            <span class="info-msg" *ngIf="redeemResp['status'] == 'SUCCESS'">Successfully Redeemed</span>
+        </div>
+    </div>
+</div>

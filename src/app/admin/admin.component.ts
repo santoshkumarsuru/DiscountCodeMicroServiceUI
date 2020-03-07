@@ -8,10 +8,8 @@ import { AdminService } from './admin.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  emailForDisCode: any;
   users: any = [];
   offers: any = [];
-  discountInfos: any = [];
   user: any = {
     name: '',
     email: ''
@@ -81,14 +79,6 @@ export class AdminComponent implements OnInit {
         discountPercent: ''
       };
       this.getOffers();
-    });
-  }
-
-  getCodes() {
-    this.adminService.getDiscountCodesByEmail(this.emailForDisCode)
-    .subscribe((data) => {
-      console.log('disc', data);
-      this.discountInfos = data['discountInfos'];
     });
   }
 }
