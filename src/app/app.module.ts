@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReceipentComponent } from './receipent/receipent.component';
+import { AdminComponent } from './admin/admin.component';
 import { SofferComponent } from './soffer/soffer.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReceipentService } from './receipent/recepient.service';
+import { AdminService } from './admin/admin.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReceipentComponent,
+    AdminComponent,
     SofferComponent,
     HomeComponent
   ],
@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ ReceipentService ],
+  providers: [ AdminService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -30,12 +30,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let receipent of receipents">
-                        <td class="hidden">{{receipent.id}}</td>
-                        <td>{{receipent.name}}</td>
-                        <td>{{receipent.email}}</td>
+                    <tr *ngFor="let admin of admins">
+                        <td class="hidden">{{admin.id}}</td>
+                        <td>{{admin.name}}</td>
+                        <td>{{admin.email}}</td>
                         <td>
-                            <button class="btn btn-success" (click)="delete(receipent)"> Delete</button>
+                            <button class="btn btn-success" (click)="delete(admin)"> Delete</button>
                         </td>
                     </tr>
                 </tbody>

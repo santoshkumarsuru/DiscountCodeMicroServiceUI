@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class ReceipentService {
+export class AdminService {
   
   constructor(private http: HttpClient) { }
 
-  getReceipents() {
+  getAdmins() {
     return this.http.get("http://localhost:8080/getRecipients");
   }
 
-  addReceipent(recipient: any): any {
+  addAdmin(recipient: any): any {
     return this.http.post("http://localhost:8080/addRecipient", recipient);    
   }
 
-  deleteReceipent(recipientId: any): any {
+  deleteAdmin(recipientId: any): any {
     return this.http.post("http://localhost:8080/deleteRecipient?recipientId=" + recipientId, {});    
   }
 
