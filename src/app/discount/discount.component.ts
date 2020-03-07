@@ -11,9 +11,15 @@ export class DiscountComponent implements OnInit {
   emailForDisCode: any;
   discountInfos: any = [];
   redeemResp: any = null;
+  valDiscResp: any = null;
   dicount: any = {
     email: '',
     discountCode: ''
+  }
+  valdiscount: any = {
+    email: '',
+    specialOfferName: '',
+    expiryDate: ''
   }
   constructor(private adminService: AdminService) { }
 
@@ -36,6 +42,21 @@ export class DiscountComponent implements OnInit {
     .subscribe((data) => {
       console.log('disc', data);
       this.redeemResp = data['responseStatus'];
+      if (this.redeemResp['status'] == 'ERROR') {
+        alert(this.redeemResp['errorMessage']);
+      } else {
+        alert('Successfully Redeemed');        
+      }
+    });
+  }
+
+  validate() {
+    let dateArr = this.valdiscount['expiryDate'].replace('-', '/').replace('-', '/');
+    this.valdiscount['expiryDate'] = dateArr;  
+    this.adminService.validateDiscountCode(this.valdiscount)
+    .subscribe((data) => {
+      console.log('val', data);
+      this.valDiscResp = data['responseStatus'];
     });
   }
 

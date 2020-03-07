@@ -36,4 +36,8 @@ export class AdminService {
   redeemDiscountCode(disc: any): any {
     return this.http.post("http://localhost:8080/redeemDiscountCode", disc); 
   }
+
+  validateDiscountCode(disc: any): any {
+    return this.http.post("http://localhost:8080/validateAndGetDiscountCode", disc); 
+  }
 }
