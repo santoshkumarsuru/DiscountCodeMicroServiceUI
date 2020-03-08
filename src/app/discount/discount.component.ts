@@ -8,6 +8,8 @@ import { AdminService } from '../admin/admin.service';
 })
 export class DiscountComponent implements OnInit {
 
+  users: any = [];
+  offers: any = [];
   emailForDisCode: any;
   discountInfos: any = [];
   redeemResp: any = null;
@@ -24,6 +26,24 @@ export class DiscountComponent implements OnInit {
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
+    this.getReceipients();
+    this.getOffers();
+  }
+
+  getReceipients() {
+    this.adminService.getAdmins()
+    .subscribe((data) => {
+      console.log(data);
+      this.users = data['recipients'];
+    });
+  }
+
+  getOffers() {
+    this.adminService.getOffers()
+    .subscribe((data) => {
+      console.log(data);
+      this.offers = data['specialOffers'];
+    });
   }
 
   redeemDisc() {
@@ -47,6 +67,7 @@ export class DiscountComponent implements OnInit {
       } else {
         alert('Successfully Redeemed');        
       }
+      this.getCodes();
     });
   }
 

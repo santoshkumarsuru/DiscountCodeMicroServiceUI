@@ -6,18 +6,24 @@
                 <tr>
                     <th>
                         Email
-                        <input name="email" [(ngModel)]="valdiscount.email" class="form-control" type="text" required />
+                        <!-- <input name="email" [(ngModel)]="valdiscount.email" class="form-control" type="text" required /> -->
+                        <select [(ngModel)]="valdiscount.email" class="form-control">
+                            <option *ngFor="let user of users" value="{{user.email}}">{{user.name}}</option>
+                        </select>
                     </th>
                     <th>
                         Special Offer Name
-                        <input name="offername" [(ngModel)]="valdiscount.specialOfferName" class="form-control" type="text" required />
+                        <!-- <input name="offername" [(ngModel)]="valdiscount.specialOfferName" class="form-control" type="text" required /> -->
+                        <select [(ngModel)]="valdiscount.specialOfferName" class="form-control">
+                            <option *ngFor="let offer of offers" value="{{offer.offerName}}">{{offer.offerName}}</option>
+                        </select>
                     </th>
                     <th>
                         Expiry Date
                         <input placeholder="MM/dd/yyyy" name="expirydate" [(ngModel)]="valdiscount.expiryDate" class="form-control" type="date" required />
                     </th>
                     <th>
-                        <button (click)="validate()" class="btn btn-success" [disabled]="valdiscount.expiryDate == '' || valdiscount.specialOfferName == '' || valdiscount.email== ''">Redeem</button>
+                        <button (click)="validate()" class="btn btn-success" [disabled]="valdiscount.expiryDate == '' || valdiscount.specialOfferName == '' || valdiscount.email== ''">Generate Discount Code</button>
                     </th>
                     <th>&nbsp;</th>
                 </tr>
@@ -37,7 +43,10 @@
                 <tr>
                     <th>
                         Email
-                        <input name="name" [(ngModel)]="emailForDisCode" class="form-control" type="text" required />
+                        <!-- <input name="name" [(ngModel)]="emailForDisCode" class="form-control" type="text" required /> -->
+                        <select [(ngModel)]="emailForDisCode" class="form-control">
+                            <option *ngFor="let user of users" value="{{user.email}}">{{user.name}}</option>
+                        </select>
                     </th>
                     <th>
                         <button (click)="getCodes()" class="btn btn-success" [disabled]="emailForDisCode == ''">Get</button>
@@ -53,7 +62,7 @@
         <div class="offer-tile shadow">
             <h5>Code: {{offer.discountCode}}</h5>
             <h1>{{offer.specialOfferName}}</h1>
-            <button (click)="redeemDiscFromTile(offer)" class="btn btn-success">Redeem</button>
+            <button (click)="redeemDiscFromTile(offer)" [disabled]="offer.used" class="btn btn-success">Redeem</button>
         </div>
     </div>
     <div class="error-msg" *ngIf="discountInfos == null ">*There are no Discounts*</div>
