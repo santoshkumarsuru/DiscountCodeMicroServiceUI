@@ -7,37 +7,37 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getAdmins() {
-    return this.http.get("http://localhost:8080/getRecipients");
+    return this.http.get("/getRecipients");
   }
 
   addAdmin(recipient: any): any {
-    return this.http.post("http://localhost:8080/addRecipient", recipient);    
+    return this.http.post("/addRecipient", recipient);    
   }
 
   deleteAdmin(recipientId: any): any {
-    return this.http.post("http://localhost:8080/deleteRecipient?recipientId=" + recipientId, {});    
+    return this.http.post("/deleteRecipient?recipientId=" + recipientId, {});    
   }
 
   getOffers(): any {
-    return this.http.get("http://localhost:8080/getSpecialOffers");
+    return this.http.get("/getSpecialOffers");
   }
   addOffer(offer: any): any {
-    return this.http.post("http://localhost:8080/addSpecialOffer", offer);    
+    return this.http.post("/addSpecialOffer", offer);    
   }
 
   deleteOffer(offerId: any): any {
-    return this.http.post("http://localhost:8080/deleteSpecialOffer?specialOfferId=" + offerId, {}); 
+    return this.http.post("/deleteSpecialOffer?specialOfferId=" + offerId, {}); 
   }
 
   getDiscountCodesByEmail(emailId: any): any {
-    return this.http.post("http://localhost:8080/getAllDiscountCodesByEmail?email=" + emailId, {}); 
+    return this.http.post("/getAllDiscountCodesByEmail?email=" + emailId, {}); 
   }
 
   redeemDiscountCode(disc: any): any {
-    return this.http.post("http://localhost:8080/redeemDiscountCode", disc); 
+    return this.http.post("/redeemDiscountCode", disc); 
   }
 
   validateDiscountCode(disc: any): any {
-    return this.http.post("http://localhost:8080/validateAndGetDiscountCode", disc); 
+    return this.http.post("/validateAndGetDiscountCode", disc); 
   }
 }
